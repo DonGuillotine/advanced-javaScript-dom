@@ -9,7 +9,8 @@ const section1 = document.querySelector('#section--1');
 
 
 // *****************************************Modal Window**************************************
-const openModal = function(){
+const openModal = function(event){
+    event.preventDefault;
     modal.classList.remove('hidden');
     overlay.classList.remove('hidden');
 }
@@ -41,11 +42,20 @@ btnScrollTo.addEventListener('click', function(){
 
 
 // ************************************* Page Navigation ***************************************
-document.querySelectorAll('.nav__link').forEach(function (element){
-    element.addEventListener('click', function(event){
-        event.preventDefault();
-        const id = this.getAttribute('href');
+// document.querySelectorAll('.nav__link').forEach(function (element){
+//     element.addEventListener('click', function(event){
+//         event.preventDefault();
+//         const id = this.getAttribute('href');
         // console.log(id);
+//         document.querySelector(id).scrollIntoView({behavior: 'smooth'});
+//     });
+// });
+
+
+document.querySelector('.nav__links').addEventListener('click', function(event){
+    event.preventDefault();
+    if(event.target.classList.contains('nav__link')){
+        const id = event.target.getAttribute('href');
         document.querySelector(id).scrollIntoView({behavior: 'smooth'});
-    });
+    }
 });
