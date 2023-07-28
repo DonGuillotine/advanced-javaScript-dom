@@ -9,6 +9,7 @@ const section1 = document.querySelector('#section--1');
 const tabs = document.querySelectorAll('.operations__tab');
 const tabsContainer = document.querySelector('.operations__tab-container');
 const tabsContent = document.querySelectorAll('.operations__content');
+const nav = document.querySelector('.nav');
 
 
 // *****************************************Modal Window**************************************
@@ -84,3 +85,26 @@ tabsContainer.addEventListener('click', function(event){
 
     document.querySelector(`.operations__content--${clicked.dataset.tab}`).classList.add('operations__content--active');
 });
+
+
+// **************************************** Menu fade Animation ********************************
+const handleHover = function(event){
+    if(event.target.classList.contains('nav__link')){
+        // Element that is being hovered
+        const link = event.target;
+        // Get all the nav__links
+        const siblings = link.closest('.nav').querySelectorAll('.nav__link');
+        // Select the logo
+        const logo = link.closest('.nav').querySelector('img');
+
+        
+        siblings.forEach(element => {
+            // If the nav__link is not equal to the one we are hovering on, then the opacity should be 0.5
+            if(element !== link) element.style.opacity = this;
+        });
+        logo.style.opacity = this;
+    }
+}
+
+nav.addEventListener('mouseover', handleHover.bind(0.5));
+nav.addEventListener('mouseout', handleHover.bind(1));
