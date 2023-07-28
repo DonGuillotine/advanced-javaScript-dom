@@ -110,6 +110,44 @@ nav.addEventListener('mouseover', handleHover.bind(0.5));
 nav.addEventListener('mouseout', handleHover.bind(1));
 
 
+
+// ********************************** Sticky Navigation **************************************
+const header = document.querySelector('.header');
+const navHeight = nav.getBoundingClientRect().height;
+
+const stickyNav = function(enrties){
+    const entry = enrties[0];
+    console.log(entry);
+
+    if(!entry.isIntersecting) nav.classList.add('sticky');
+    else nav.classList.remove('sticky');
+}
+
+const navOptions = {
+    root: null,
+    threshold: 0,
+    rootMargin: `-${navHeight}px`
+}
+
+
+const headerObserver = new IntersectionObserver(stickyNav, navOptions);
+headerObserver.observe(header);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // ****************************** Intersection Observer API *****************************
 // When the Intersection observer detects changes in the intersection status of observed elements this function will run!
 
@@ -127,5 +165,5 @@ const obsOptions = {
     threshold: [0, 0.2]
 }
 
-const observer = new IntersectionObserver(obsCallBack, obsOptions);
-observer.observe(section1);
+// const observer = new IntersectionObserver(obsCallBack, obsOptions);
+// observer.observe(section1);
