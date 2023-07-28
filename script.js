@@ -108,3 +108,24 @@ const handleHover = function(event){
 
 nav.addEventListener('mouseover', handleHover.bind(0.5));
 nav.addEventListener('mouseout', handleHover.bind(1));
+
+
+// ****************************** Intersection Observer API *****************************
+// When the Intersection observer detects changes in the intersection status of observed elements this function will run!
+
+// The enrties parameter represents one observed element
+const obsCallBack = function(entries){
+    entries.forEach(entry => {
+        console.log(entry);
+    })
+}
+
+const obsOptions = {
+    // root specifies the element that would be usded as the viewport. Since we have null, it means that the entire document viewport will be used
+    root: null,
+    // Defines what percentage of the targets visibility the callback function should be executed. In this case the Callback function will be triggered when 20% target element is visible
+    threshold: [0, 0.2]
+}
+
+const observer = new IntersectionObserver(obsCallBack, obsOptions);
+observer.observe(section1);
