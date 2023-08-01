@@ -134,9 +134,33 @@ const headerObserver = new IntersectionObserver(stickyNav, navOptions);
 headerObserver.observe(header);
 
 
+//************************************ Reaveal Section on scroll ******************************/
+const allSections = document.querySelectorAll('.section');
 
 
+// The enrties parameter represents the observed element. It contains info about it's intersection
+// The observer parameter holds an instance of the IntersectionObserver that is responsible for tracking the intersection changes.
+const revealSection = function(entries, observer){
+    const entry = entries[0];
 
+    if(!entry.isIntersecting) return;
+
+    entry.target.classList.remove('section--hidden');
+    observer.unobserve(entry.target)
+}
+
+const revealOptions = {
+    root: null,
+    threshold: 0.15
+}
+
+const sectionObserver = new IntersectionObserver(revealSection, revealOptions);
+
+
+allSections.forEach(function (section){
+    sectionObserver.observe(section);
+    section.classList.add('section--hidden');
+});
 
 
 
