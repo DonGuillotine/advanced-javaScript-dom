@@ -1,1 +1,1 @@
-# Advanced JavaScript-dom
+# Advanced JavaScript DOM Manipulation
