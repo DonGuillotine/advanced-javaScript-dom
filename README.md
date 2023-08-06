@@ -1,1 +1,1 @@
-# advanced-javaScript-dom
+# Advanced JavaScript-dom
