@@ -1,1 +1,1 @@
-# Advanced JavaScript Document Object Model Manipulation
+# Advanced JavaScript Document Object Model (DOM) Manipulation
